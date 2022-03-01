@@ -70,6 +70,11 @@ flutter:
     - assets/images/pic_1.png
     - assets/images/gif_1.gif
     - assets/images/gif_3.gif
+    - assets/images/pic_2.png
+    - assets/images/pic_3.jpg
+    - assets/images/pic_4.jpg
+    - assets/images/pic_5.png
+    - assets/images/pic_6.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
