@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './size.dart';
+import './music_player.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -9,6 +10,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  void change() {
+    setState(() {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => musicPlayer()));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,10 +74,24 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              // Color(0xff0d47a1),
+              // Color(0xff0d47a1),
+              // Colors.grey,
+              // Colors.black54,
+              // Color(Colors.blue)
+              Colors.black,
+              Colors.deepPurple,
+            ],
+          )),
+        ),
         title: Text("Explore"),
-
         actions: <Widget>[
-
           IconButton(
             icon: Image.asset('assets/images/pic_1.png'),
             iconSize: 50,
@@ -77,66 +99,85 @@ class _HomepageState extends State<Homepage> {
               ScaffoldMessenger.of(context)
                   .showSnackBar(const SnackBar(content: Text('Songs Lyrics')));
             },
-          )
+          ),
         ],
-        backgroundColor: Colors.grey[900],
       ),
-      body: Column(
-        children: [
-          Container(
-
-            width: 380,
-            height: 70,
-            margin: EdgeInsets.only(top: AppMargin.m16, left: AppMargin.m8),
-            // color: Colors.white,
-            decoration: BoxDecoration(
+      body: Container(
+        decoration: BoxDecoration(
+          // color: Colors.black54
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              // Color(0xff0d47a1),
+              // Color(0xff0d47a1),
+              // Colors.grey,
+              // Colors.black54,
+              // Color(Colors.blue)
+              Colors.black,
+              Colors.deepPurple,
+            ],
+          ),
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: 380,
+              height: 70,
+              margin: EdgeInsets.only(top: AppMargin.m16, left: AppMargin.m8),
+              // color: Colors.white,
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(40.0),
                     bottomRight: Radius.circular(40.0),
                     topLeft: Radius.circular(40.0),
                     bottomLeft: Radius.circular(40.0)),
                 // color: Colors.grey[900],
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  // Color(0xff0d47a1),
-                  // Color(0xff0d47a1),
-                  // Colors.grey,
-                  // Colors.black54,
-                  // Color(Colors.blue)
-                  Colors.black,
-                  Colors.deepPurple,
-                ],
-              ),),
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    // Color(0xff0d47a1),
+                    // Color(0xff0d47a1),
+                    // Colors.grey,
+                    // Colors.black54,
+                    // Color(Colors.blue)
+                    Colors.black,
+                    Colors.deepPurple,
+                  ],
+                ),
+              ),
 
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ),
-                // IconButton(
-                //   onPressed: () {
-                //     showSearch(
-                //       context: context,
-                //       delegate: CustumSearchDelegate(),);
-                //   },
-                //   icon: Icon(
-                //     Icons.search,
-                //     color: Colors.white,
-                //   ),
-                // ),
-
-                Text(
-                  "Search Artist .....",
-                  style: TextStyle(color: Colors.grey[400]),
-                ),
-                Container(
+                  // IconButton(
+                  //   onPressed: () {
+                  //     showSearch(
+                  //       context: context,
+                  //       delegate: CustumSearchDelegate(),);
+                  //   },
+                  //   icon: Icon(
+                  //     Icons.search,
+                  //     color: Colors.white,
+                  //   ),
+                  // ),
+                  Expanded(
+                    child: Text(
+                      "Search....",
+                      style: TextStyle(color: Colors.grey[400]),
+                    ),
+                  ),
+                  Container(
                     margin: EdgeInsets.only(left: AppMargin.m14),
                     child: IconButton(
                       onPressed: () {},
@@ -144,105 +185,113 @@ class _HomepageState extends State<Homepage> {
                         Icons.mic_rounded,
                         color: Colors.white,
                       ),
-                    ))
-              ],
-            ),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: 180,
-                margin: EdgeInsets.only(left: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black45,
-                        width: 4.0,
-                        style: BorderStyle.solid),
-                    borderRadius: BorderRadius.circular(40),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white24,
-                        offset: const Offset(
-                          5.0,
-                          5.0,
-                        ),
-                        blurRadius: 5.0,
-                        spreadRadius: 2.0,
-                      ), //BoxShadow
-                      BoxShadow(
-                        color: Colors.black45,
-                        offset: const Offset(0.0, 0.0),
-                        blurRadius: 0.0,
-                        spreadRadius: 0.0,
-                      ), //BoxShadow
-                    ],
+                    ),
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(40),
-                    child: Image(
-                      image: AssetImage("assets/images/pic_4.jpg"),
+                ],
+              ),
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      change();
+                    },
+                    child: Container(
+                      width: 180,
+                      margin: EdgeInsets.only(left: 10),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black45,
+                              width: 4.0,
+                              style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(40),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white24,
+                              offset: const Offset(
+                                5.0,
+                                5.0,
+                              ),
+                              blurRadius: 5.0,
+                              spreadRadius: 2.0,
+                            ), //BoxShadow
+                            BoxShadow(
+                              color: Colors.black45,
+                              offset: const Offset(0.0, 0.0),
+                              blurRadius: 0.0,
+                              spreadRadius: 0.0,
+                            ), //BoxShadow
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(40),
+                          child: Image(
+                            image: AssetImage("assets/images/pic_4.jpg"),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  margin: EdgeInsets.only(bottom: 20),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Name :",
-                            style: TextStyle(color: Colors.redAccent),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Name :",
+                              style: TextStyle(color: Colors.redAccent),
+                            ),
+                            Text(
+                              "  Arijit Singh",
+                              style: TextStyle(color: Colors.white),
+                            )
+                          ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 10, right: 25),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Album :",
+                                style: TextStyle(color: Colors.redAccent),
+                              ),
+                              Text(
+                                " Saavn",
+                                style: TextStyle(color: Colors.white),
+                              )
+                            ],
                           ),
-                          Text(
-                            "  Arijit Singh",
-                            style: TextStyle(color: Colors.white),
-                          )
-                        ],
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10,right: 25),
-                        child: Row(
-                          children: [
-                            Text(
-                              "Album :",
-                              style: TextStyle(color: Colors.redAccent),
-                            ),
-                            Text(
-                              " Saavn",
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
                         ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 10),
-                        child: Row(
-                          children: [
-                            Text(
-                              "Song Name :",
-                              style: TextStyle(color: Colors.redAccent),
-                            ),
-                            Text(
-                              "  Saavn",
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
+                        Container(
+                          margin: EdgeInsets.only(top: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Song Name :",
+                                style: TextStyle(color: Colors.redAccent),
+                              ),
+                              Text(
+                                "  Saavn",
+                                style: TextStyle(color: Colors.white),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

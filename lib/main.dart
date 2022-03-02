@@ -45,6 +45,7 @@ class _musicSplashState extends State<musicSplash> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Expanded(child:
           Container(
             margin: EdgeInsets.only(top: AppMargin.m14) ,
             child: Center(
@@ -53,13 +54,16 @@ class _musicSplashState extends State<musicSplash> {
               ),
             ),
           ),
+    ),
+          Expanded(child:
           Container(
               margin: EdgeInsets.only( top: AppMargin.m12, ),
               child: Text(
                 "@ Powered By Walking Tree",
                 style: TextStyle(color: Colors.brown),
                 // textAlign: TextAlign.end,
-              )),
+              ),),
+          ),
         ],
       ),
     );
