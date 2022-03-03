@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './size.dart';
-import './music_player.dart';
+import '../size.dart';
+import 'music_player.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);

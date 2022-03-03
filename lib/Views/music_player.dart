@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import './Homepage.dart';
+import 'Homepage.dart';
 
 class musicPlayer extends StatefulWidget {
   const musicPlayer({Key? key}) : super(key: key);
@@ -126,30 +126,62 @@ class _musicPlayerState extends State<musicPlayer> {
                   });
                 },
               ),
-              Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.save_alt
-                  ,color: Colors.red,),),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.save_alt
-                      ,color: Colors.red,),),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.save_alt
-                      ,color: Colors.red,),),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.save_alt
-                      ,color: Colors.red,),),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.save_alt
-                      ,color: Colors.red,),),
-                ],
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.my_library_music_rounded,
+                          color: Colors.red, size: 30),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.pause, color: Colors.red, size: 30),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.play_circle_fill,
+                          color: Colors.red, size: 30),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.skip_next_outlined,
+                          color: Colors.red, size: 30),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.shuffle, color: Colors.red, size: 30),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(top: 50),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red,
+                          onPrimary: Colors.white,
+                        ),
+                        child: Text("Bring To Light"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red,
+                          onPrimary: Colors.white,
+                        ),
+                        child: Text("Vote For This"),
+                      ),
+                    ],
+                  ),
+                ),
               )
             ],
           ),
