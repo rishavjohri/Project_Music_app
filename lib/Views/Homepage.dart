@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/model/musicInfo.dart';
 import '../size.dart';
 import 'music_player.dart';
+import 'package:music_app/service/api_Manager.dart';
+import 'dart:async';
+// import 'package:intl/intl.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -10,6 +14,19 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  late Future<Music> musicModel;
+  void initState() {
+    super.initState();
+    musicModel = API_Manager().getMusic();
+  }
+  // void oncahnge()
+  // {
+  //   setState(() {
+  //      _musicModel = API_Manager().getMusic();
+  //    super.initState();
+  //   });
+  // }
+
   void change() {
     setState(() {
       Navigator.of(context).pushReplacement(
@@ -290,6 +307,65 @@ class _HomepageState extends State<Homepage> {
                 ),
               ],
             ),
+            Container(
+                margin: EdgeInsets.only(top: 20),
+                child: FutureBuilder<Music>(
+                  future: musicModel,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                          itemCount: snapshot.data?.music.length,
+                          itemBuilder: (context, index) {
+                            var x = snapshot.data?.music[index];
+                            return Container(
+                              height: 100,
+                              width: 100,
+                              margin: EdgeInsets.only(top: 20),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Card(
+                                      clipBehavior: Clip.antiAlias,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                      ),
+                                      child: AspectRatio(
+                                        aspectRatio: 1,
+                                        child: Image.network(
+                                          'x.imageLink',
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  // Flexible(
+                                  //   child: Column(
+                                  //     crossAxisAlignment:
+                                  //         CrossAxisAlignment.start,
+                                  //     children: <Widget>[
+                                  //       Text(
+                                  //         'x.songName',
+                                  //         overflow: TextOverflow.ellipsis,
+                                  //         style: TextStyle(
+                                  //             fontSize: 20,
+                                  //             fontWeight: FontWeight.bold),
+                                  //       ),
+                                  //       Text(
+                                  //         'x.description',
+                                  //         maxLines: 2,
+                                  //         overflow: TextOverflow.ellipsis,
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
+                                ],
+                              ),
+                            );
+                          });
+                    } else
+                      return Center(child: CircularProgressIndicator());
+                  },
+                )),
           ],
         ),
       ),
@@ -365,3 +441,4 @@ class _HomepageState extends State<Homepage> {
 //     throw UnimplementedError();
 //   }
 // }
+// CircularProgressIndicator()

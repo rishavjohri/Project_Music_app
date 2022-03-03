@@ -134,25 +134,25 @@ class _musicPlayerState extends State<musicPlayer> {
                     IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.my_library_music_rounded,
-                          color: Colors.red, size: 30),
+                          color: Colors.purple, size: 30),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.pause, color: Colors.red, size: 30),
+                      icon: Icon(Icons.pause, color: Colors.purple, size: 30),
                     ),
                     IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.play_circle_fill,
-                          color: Colors.red, size: 30),
+                          color: Colors.purple, size: 30),
                     ),
                     IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.skip_next_outlined,
-                          color: Colors.red, size: 30),
+                          color: Colors.purple, size: 30),
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.shuffle, color: Colors.red, size: 30),
+                      icon: Icon(Icons.shuffle, color: Colors.purple, size: 30),
                     ),
                   ],
                 ),
@@ -166,7 +166,7 @@ class _musicPlayerState extends State<musicPlayer> {
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
+                          primary: Colors.purple,
                           onPrimary: Colors.white,
                         ),
                         child: Text("Bring To Light"),
@@ -174,7 +174,7 @@ class _musicPlayerState extends State<musicPlayer> {
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
+                          primary: Colors.purple,
                           onPrimary: Colors.white,
                         ),
                         child: Text("Vote For This"),
