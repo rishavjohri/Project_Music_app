@@ -7,6 +7,7 @@ import "package:music_app/constant/string.dart";
 // ignore: camel_case_types
 class API_Manager {
   Future<Music> getMusic() async {
+
     var musicModel;
 
     try {

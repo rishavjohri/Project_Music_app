@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/Views/construction.dart';
 import 'package:music_app/model/musicInfo.dart';
 import '../size.dart';
 import 'music_player.dart';
@@ -14,7 +15,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  late Future<Music> musicModel;
+  Future<Music>? musicModel;
   void initState() {
     super.initState();
     musicModel = API_Manager().getMusic();
@@ -39,55 +40,60 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       backgroundColor: Colors.black45,
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: const <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                // color: Colors.black54
-                gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    // Color(0xff0d47a1),
-                    // Color(0xff0d47a1),
-                    // Colors.grey,
-                    // Colors.black54,
-                    // Color(Colors.blue)
-                    Colors.black,
-                    Colors.deepPurple,
-                  ],
+        child: GestureDetector(
+          onTap: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>construction()));
+          },
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: const <Widget>[
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  // color: Colors.black54
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      // Color(0xff0d47a1),
+                      // Color(0xff0d47a1),
+                      // Colors.grey,
+                      // Colors.black54,
+                      // Color(Colors.blue)
+                      Colors.black,
+                      Colors.deepPurple,
+                    ],
+                  ),
+                ),
+                child: Text(
+                  'Music',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
                 ),
               ),
-              child: Text(
-                'Music',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              ListTile(
+                leading: Icon(Icons.add_to_home_screen_outlined),
+                title: Text('Home'),
               ),
-            ),
-            ListTile(
-              leading: Icon(Icons.add_to_home_screen_outlined),
-              title: Text('Home'),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
-            ),
-            ListTile(
-              leading: Icon(Icons.update_rounded),
-              title: Text('Updates'),
-            ),
-            ListTile(
-              leading: Icon(Icons.change_circle),
-              title: Text('language'),
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-          ],
+              ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text('Profile'),
+              ),
+              ListTile(
+                leading: Icon(Icons.update_rounded),
+                title: Text('Updates'),
+              ),
+              ListTile(
+                leading: Icon(Icons.change_circle),
+                title: Text('language'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Settings'),
+              ),
+            ],
+          ),
         ),
       ),
       appBar: AppBar(
@@ -168,13 +174,11 @@ class _HomepageState extends State<Homepage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.white,
                     ),
                   ),
                   // IconButton(
@@ -188,11 +192,9 @@ class _HomepageState extends State<Homepage> {
                   //     color: Colors.white,
                   //   ),
                   // ),
-                  Expanded(
-                    child: Text(
-                      "Search....",
-                      style: TextStyle(color: Colors.grey[400]),
-                    ),
+                  Text(
+                    "Search....",
+                    style: TextStyle(color: Colors.grey[400]),
                   ),
                   Container(
                     margin: EdgeInsets.only(left: AppMargin.m14),
@@ -210,44 +212,42 @@ class _HomepageState extends State<Homepage> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      change();
-                    },
+                TextButton(
+                  onPressed: () {
+                    change();
+                  },
+                  child: Container(
+                    width: 180,
+                    margin: EdgeInsets.only(left: 10),
                     child: Container(
-                      width: 180,
-                      margin: EdgeInsets.only(left: 10),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.black45,
-                              width: 4.0,
-                              style: BorderStyle.solid),
-                          borderRadius: BorderRadius.circular(40),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white24,
-                              offset: const Offset(
-                                5.0,
-                                5.0,
-                              ),
-                              blurRadius: 5.0,
-                              spreadRadius: 2.0,
-                            ), //BoxShadow
-                            BoxShadow(
-                              color: Colors.black45,
-                              offset: const Offset(0.0, 0.0),
-                              blurRadius: 0.0,
-                              spreadRadius: 0.0,
-                            ), //BoxShadow
-                          ],
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(40),
-                          child: Image(
-                            image: AssetImage("assets/images/pic_4.jpg"),
-                          ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.black45,
+                            width: 4.0,
+                            style: BorderStyle.solid),
+                        borderRadius: BorderRadius.circular(40),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white24,
+                            offset: const Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 5.0,
+                            spreadRadius: 2.0,
+                          ), //BoxShadow
+                          BoxShadow(
+                            color: Colors.black45,
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ), //BoxShadow
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(40),
+                        child: Image(
+                          image: AssetImage("assets/images/pic_4.jpg"),
                         ),
                       ),
                     ),
@@ -307,65 +307,88 @@ class _HomepageState extends State<Homepage> {
                 ),
               ],
             ),
-            Container(
-                margin: EdgeInsets.only(top: 20),
-                child: FutureBuilder<Music>(
-                  future: musicModel,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                          itemCount: snapshot.data?.music.length,
-                          itemBuilder: (context, index) {
-                            var x = snapshot.data?.music[index];
-                            return Container(
-                              height: 100,
-                              width: 100,
-                              margin: EdgeInsets.only(top: 20),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Card(
-                                      clipBehavior: Clip.antiAlias,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(24),
-                                      ),
-                                      child: AspectRatio(
-                                        aspectRatio: 1,
-                                        child: Image.network(
-                                          'x.imageLink',
-                                          fit: BoxFit.cover,
+            Expanded(
+              child: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: FutureBuilder<Music>(
+                    future: musicModel,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                            itemCount: snapshot.data!.music.length,
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              var x = snapshot.data!.music[index];
+                              return Container(
+                                height: 100,
+                                width: 100,
+                                margin: EdgeInsets.only(top: 20),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    change();
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Card(
+                                          margin: EdgeInsets.only(left: 5),
+                                          clipBehavior: Clip.antiAlias,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                          ),
+                                          child: AspectRatio(
+                                            aspectRatio: 1,
+                                            child: Image.network(
+                                              x.imageLink,
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
+                                      Flexible(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(right: 10),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: <Widget>[
+                                              Text(
+                                                x.songName,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              Text(
+                                                x.description,
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                                textAlign: TextAlign.center,
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  // Flexible(
-                                  //   child: Column(
-                                  //     crossAxisAlignment:
-                                  //         CrossAxisAlignment.start,
-                                  //     children: <Widget>[
-                                  //       Text(
-                                  //         'x.songName',
-                                  //         overflow: TextOverflow.ellipsis,
-                                  //         style: TextStyle(
-                                  //             fontSize: 20,
-                                  //             fontWeight: FontWeight.bold),
-                                  //       ),
-                                  //       Text(
-                                  //         'x.description',
-                                  //         maxLines: 2,
-                                  //         overflow: TextOverflow.ellipsis,
-                                  //       ),
-                                  //     ],
-                                  //   ),
-                                  // ),
-                                ],
-                              ),
-                            );
-                          });
-                    } else
-                      return Center(child: CircularProgressIndicator());
-                  },
-                )),
+                                ),
+                              );
+                            });
+                      } else
+                        return Center(child: CircularProgressIndicator());
+                    },
+                  )),
+            ),
           ],
         ),
       ),
